@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../header-styles.css";
 
 const Navigation = () =>    {
@@ -23,12 +24,12 @@ const Navigation = () =>    {
     return (
         <nav className="nav-body" >
             <ul style={ulStyle}>
-                <li style={liStyle}><a href="/" style={aStyle}>Home</a></li>
-                <li style={liStyle}><a href="/about" style={aStyle}>About</a></li>
-                <li style={liStyle}><a href="/menu" style={aStyle}>Menu</a></li>
-                <li style={liStyle}><a href="/reservation" style={aStyle}>Reservations</a></li>
-                <li style={liStyle}><a href="/order" style={aStyle}>Order Online</a></li>
-                <li style={liStyle}><a href="/login" style={aStyle}>Login</a></li>
+                <li style={liStyle}><Link to="/" style={aStyle}>Home</Link></li>
+                <li style={liStyle}><Link to="/about" style={aStyle}>About</Link></li>
+                <li style={liStyle}><Link to="/menu" style={aStyle}>Menu</Link></li>
+                <li style={liStyle}><Link to="/reservation" style={aStyle}>Reservations</Link></li>
+                <li style={liStyle}><Link to="/order" style={aStyle}>Order Online</Link></li>
+                <li style={liStyle}><Link to="/login" style={aStyle}>Login</Link></li>
             </ul>
         </nav>
     )
