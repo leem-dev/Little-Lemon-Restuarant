@@ -1,20 +1,15 @@
-import { Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import {Routes, Route } from "react-router-dom";
 import HomePage from "../../routes/homepage-element/homepage-element";
 import BookingPage from "../../routes/booking-element/booking-element";
 
 const Main = () =>  {
     return (
         <>
-            <Router>
-                <Switch>
-                    <Route path="/">
-                        <HomePage />
-                    </Route>
-                    <Route path="/booking">
-                        <BookingPage />
-                    </Route>
-                </Switch>
-            </Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/booking" element={<BookingPage />}/>
+            </Routes>
         </>
     )
 }

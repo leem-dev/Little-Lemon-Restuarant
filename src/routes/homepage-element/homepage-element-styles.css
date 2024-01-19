@@ -1,0 +1,51 @@
+.heroSection    {
+    margin-top: 10px;
+    padding: 0rem 12rem;
+    height: 27vh;
+    background: #495e57;
+
+    display: flex;
+}
+
+.left-section    {
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.headerText    {
+    margin-top: 9px;
+    color: #f4ce14;
+    font-family: 'Markazi Text', serif;
+    font-size: 40px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.chiText    {
+    margin-top: -14px;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-family: 'Markazi Text', serif;
+}
+
+.briefText  {
+    color: white;
+    font-size: 15px;
+    font-family: 'Karla', sans-serif;
+    min-width: 240px;
+    max-width: 300px;
+}
+
+.reserve-btn  {
+    margin-top: 10px;
+    background: #f4ce14;
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
