@@ -1,0 +1,88 @@
+.specialSection {
+    margin-top: 100px;
+    padding: 0rem 12rem;
+
+}
+
+.specials-top    {
+    margin-bottom: 30px;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.specials-top h2 {
+    margin-right: auto;
+    /* color: #f4ce14; */
+    font-family: 'Markazi Text', serif;
+    font-size: 50px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.menu-btn    {
+    padding: 20px;
+}
+
+.specials-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.specials-image {
+    height: 200px;
+    background: white;
+}
+
+.specials-image img {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.specials-box    {
+    background: #dcdcdc;
+}
+
+.specials-inner-box {
+    margin-top: 5px;
+    height: 220px;
+    padding: 1rem;
+}
+
+.name-and-price {
+    margin-bottom: 35px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.name-and-price h5  {
+    font-family: 'Markazi Text', serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-right: auto;
+}
+
+.name-and-price p   {
+    color: #ee9972;
+    font-weight: 500;
+    font-family: 'Markazi Text', serif;
+    font-size: 20px;
+}
+
+.specials-info  {
+    margin-bottom: 30px;
+    width: 200px;
+}
+
+.specials-info-text  {
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+}
+
+.specials-delivery  {
+    border: 1px dashed red;
+}
