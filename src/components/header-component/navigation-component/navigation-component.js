@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../header-styles.css";
 
-const Navigation = () =>    {
+const Navigation = ({ className }) =>    {
 
     const ulStyle = {
         margin: "0px",

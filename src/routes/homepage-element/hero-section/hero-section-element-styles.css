@@ -1,7 +1,7 @@
 .heroSection    {
     margin-top: 10px;
     padding: 0rem 12rem;
-    height: 27vh;
+    height: 29vh;
     background: #495e57;
 
     display: flex;
@@ -22,7 +22,7 @@
 }
 
 .chiText    {
-    margin-top: -14px;
+    margin-top: -12px;
     color: white;
     font-weight: 400;
     letter-spacing: 1px;
@@ -31,6 +31,7 @@
 }
 
 .briefText  {
+    margin: 10px 0px;
     color: white;
     font-size: 15px;
     font-family: 'Karla', sans-serif;
@@ -41,7 +42,29 @@
 
 
 .reserve-btn  {
-    margin-top: 10px;
+    margin: 10px 0px;
     padding: 10px 25px;
 
 }
+
+@media only screen and (max-width: 600px) {
+    .heroSection {
+        padding: 0rem 2rem;
+        height: 55vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-section    {
+        margin-right: none;
+        width: 100%;
+    }
+  }
+  
+  @media only screen and (min-width: 601px) and (max-width: 1200px) {
+    .heroSection {
+        padding: 0rem 3rem;
+    }
+  }
