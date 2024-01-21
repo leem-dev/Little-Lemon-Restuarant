@@ -5,12 +5,7 @@ import "./hero-section-element-styles.css";
 
 const HeroSection = () =>   {
 
-    const heroImg = {
-        marginTop: "20px",
-        width: "230px",
-        height: "230px",
-        borderRadius: "10px"
-    }
+    
 
     return (
         <>
@@ -23,8 +18,8 @@ const HeroSection = () =>   {
                     </p>
                     <button type="button" className="reserve-btn btn">Reserve a Table</button>
                 </div>
-                <div className="rightHeroSection">
-                    <img src={HeroImage} alt="HeroImage" style={heroImg} className="hero-image"/>
+                <div className="right-hero-section">
+                    <img src={HeroImage} alt="HeroImage" className="hero-image"/>
                 </div>
             </div>
         </>

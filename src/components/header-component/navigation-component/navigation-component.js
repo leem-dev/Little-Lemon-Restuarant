@@ -43,7 +43,7 @@ const Navigation = () =>    {
             </div>
 
             {isMenuOpen && (
-                <nav className="nav-body-1" onClick={closeMenu}>
+                <nav className="nav-body-menu" onClick={closeMenu}>
                     <ul style={ulStyle} className="nav-list">
                         <li style={liStyle}>
                             <Link to="/" style={aStyle} className="nav-link">Home</Link>
@@ -68,7 +68,6 @@ const Navigation = () =>    {
             )}
             
         </div>
-        
     )
 }
 

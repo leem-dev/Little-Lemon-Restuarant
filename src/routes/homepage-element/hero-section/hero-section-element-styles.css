@@ -5,6 +5,7 @@
     background: #495e57;
 
     display: flex;
+    position: relative;
 }
 
 .left-section    {
@@ -39,22 +40,33 @@
     max-width: 300px;
 }
 
-
-
 .reserve-btn  {
     margin: 10px 0px;
     padding: 10px 25px;
-
 }
 
-@media only screen and (max-width: 600px) {
+.right-hero-section   {
+    
+    position: absolute;
+    right: 230px;
+    bottom: -30px;
+}
+
+.hero-image {
+    width: 230px;
+    height: 220px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 500px) {
     .heroSection {
-        padding: 0rem 2rem;
-        height: 68vh;
+        padding: 0rem 3rem;
+        height: 60vh;
 
         display: flex;
         flex-direction: column;
         align-items: center;
+
     }
 
     .left-section    {
@@ -62,14 +74,61 @@
         width: 100%;
     }
 
+    .right-hero-section   {
+        width: "210px";
+        height: "180px";
+        position: absolute;
+        left: 50px;
+        bottom: -70px;
+    }
+
     .hero-image {
         margin-top: 0px;
+        width: "200px";
+        height: "200px";
 
     }
   }
   
-  @media only screen and (min-width: 601px) and (max-width: 1200px) {
+  @media only screen and (min-width: 501px) and (max-width: 800px) {
     .heroSection {
         padding: 0rem 3rem;
+        height: 60vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .hero-image {
+        margin-top: 0px;
+       
+    }
+
+    .right-hero-section   {
+        position: absolute;
+        left: 40px;
+        bottom: -70px;
+    }
+  }
+
+  @media only screen and (min-width: 801px) and (max-width: 1200px) {
+    .heroSection {
+        padding: 0rem 3rem;
+        height: 30vh;
+    }
+
+    .hero-image {
+        margin-top: 0px;
+        
+    }
+
+    .right-hero-section   {
+        width: "300px";
+        height: "270px";
+        position: absolute;
+        right: 130px;
+        bottom: -50px;
     }
   }
