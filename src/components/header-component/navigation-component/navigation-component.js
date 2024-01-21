@@ -1,8 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import HamIcon from "../../../assets/hamburger-icon.svg"
 import "../header-styles.css";
 
-const Navigation = ({ className }) =>    {
+const Navigation = () =>    {
 
     const ulStyle = {
         margin: "0px",
@@ -23,29 +26,49 @@ const Navigation = ({ className }) =>    {
         textDecoration: "none",
     }
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () =>    {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+    const closeMenu = () => {
+        setIsMenuOpen(false)
+    }
+
     return (
-        <nav className="nav-body" >
-            <ul style={ulStyle}>
-                <li style={liStyle}>
-                    <Link to="/" style={aStyle}>Home</Link>
-                </li>
-                <li style={liStyle}>
-                    <Link to="/about" style={aStyle}>About</Link>
-                </li>
-                <li style={liStyle}>
-                    <Link to="/menu" style={aStyle}>Menu</Link>
-                </li>
-                <li style={liStyle}>
-                    <Link to="/reservation" style={aStyle}>Reservations</Link>
-                </li>
-                <li style={liStyle}>
-                    <Link to="/order" style={aStyle}>Order Online</Link>
-                </li>
-                <li style={liStyle}>
-                    <Link to="/login" style={aStyle}>Login</Link>
-                </li>
-            </ul>
-        </nav>
+        <div className="dropdown-menu">
+            <div className="menu-toggle" onClick={toggleMenu}>
+                <img src={HamIcon} alt="ham-icon" className="ham-icon" />
+            </div>
+
+            {isMenuOpen && (
+                <nav className="nav-body-1" onClick={closeMenu}>
+                    <ul style={ulStyle} className="nav-list">
+                        <li style={liStyle}>
+                            <Link to="/" style={aStyle} className="nav-link">Home</Link>
+                        </li>
+                        <li style={liStyle}>
+                            <Link to="/about" style={aStyle} className="nav-link">About</Link>
+                        </li>
+                        <li style={liStyle}>
+                            <Link to="/menu" style={aStyle} className="nav-link">Menu</Link>
+                        </li>
+                        <li style={liStyle}>
+                            <Link to="/reservation" style={aStyle} className="nav-link">Reservations</Link>
+                        </li>
+                        <li style={liStyle}>
+                            <Link to="/order" style={aStyle} className="nav-link">Order Online</Link>
+                        </li>
+                        <li style={liStyle}>
+                            <Link to="/login" style={aStyle} className="nav-link">Login</Link>
+                        </li>
+                    </ul>
+                </nav>
+            )}
+            
+        </div>
+        
     )
 }
 

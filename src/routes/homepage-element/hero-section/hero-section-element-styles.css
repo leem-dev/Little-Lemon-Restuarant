@@ -50,7 +50,7 @@
 @media only screen and (max-width: 600px) {
     .heroSection {
         padding: 0rem 2rem;
-        height: 55vh;
+        height: 68vh;
 
         display: flex;
         flex-direction: column;
@@ -60,6 +60,11 @@
     .left-section    {
         margin-right: none;
         width: 100%;
+    }
+
+    .hero-image {
+        margin-top: 0px;
+
     }
   }
   

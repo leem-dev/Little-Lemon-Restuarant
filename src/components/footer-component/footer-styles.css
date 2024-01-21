@@ -63,6 +63,12 @@
         gap: 20px;
     }
 
+    .footer-container p,
+    .footer-container li,
+    .footer-container a {
+        font-size: 10px;
+    }
+
     .section-2 nav  {
         display: flex;
         flex-direction: column;

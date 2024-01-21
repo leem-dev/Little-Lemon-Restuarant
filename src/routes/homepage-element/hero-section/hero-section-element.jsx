@@ -24,7 +24,7 @@ const HeroSection = () =>   {
                     <button type="button" className="reserve-btn btn">Reserve a Table</button>
                 </div>
                 <div className="rightHeroSection">
-                    <img src={HeroImage} alt="HeroImage" style={heroImg}/>
+                    <img src={HeroImage} alt="HeroImage" style={heroImg} className="hero-image"/>
                 </div>
             </div>
         </>
