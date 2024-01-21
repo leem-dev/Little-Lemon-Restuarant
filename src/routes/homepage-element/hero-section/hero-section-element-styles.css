@@ -103,12 +103,12 @@
 
     .hero-image {
         margin-top: 0px;
-       
+
     }
 
     .right-hero-section   {
         position: absolute;
-        left: 40px;
+        right: 40px;
         bottom: -70px;
     }
   }
