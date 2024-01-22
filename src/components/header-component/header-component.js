@@ -40,7 +40,7 @@ const Header = () =>    {
                             <Link to="/menu" style={aStyle} className="nav-link">Menu</Link>
                         </li>
                         <li style={liStyle}>
-                            <Link to="/reservation" style={aStyle} className="nav-link">Reservations</Link>
+                            <Link to="/booking" style={aStyle} className="nav-link">Reservations</Link>
                         </li>
                         <li style={liStyle}>
                             <Link to="/order" style={aStyle} className="nav-link">Order Online</Link>

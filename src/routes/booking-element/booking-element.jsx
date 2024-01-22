@@ -1,8 +1,8 @@
-const BookingPage = () =>   {
+import BookingForm from "./booking-form-element";
+
+const BookingPage = (props) =>   {
     return (
-        <>
-            Hi, I am the booking page
-        </>
+        <BookingForm availNewTimes={props.availNewTimes} dispatch={props.dispatch} submitForm={props.submitForm} />
     )
 }
 

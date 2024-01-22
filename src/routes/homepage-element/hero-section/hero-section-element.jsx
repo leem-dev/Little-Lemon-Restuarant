@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeroImage from "../../../assets/restauranfood.jpg";
 
 import "./hero-section-element-styles.css";
@@ -16,7 +17,9 @@ const HeroSection = () =>   {
                     <p className="briefText">
                         We are a family owned Medditerranean restaurant, focused on traditional recipes served with a modern twist.
                     </p>
-                    <button type="button" className="reserve-btn btn">Reserve a Table</button>
+                    <Link to="/booking">
+                        <button type="button" className="reserve-btn btn">Reserve a Table</button>
+                    </Link>
                 </div>
                 <div className="right-hero-section">
                     <img src={HeroImage} alt="HeroImage" className="hero-image"/>
