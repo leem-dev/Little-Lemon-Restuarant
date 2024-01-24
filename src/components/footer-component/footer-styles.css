@@ -1,84 +1,82 @@
-.footer-container   {
-    margin-top: 50px;
-    background: rgb(245, 245, 245);
-    padding: 1rem 12rem;
+.footer-container {
+  margin-top: 50px;
+  background: rgb(245, 245, 245);
+  padding: 1rem 12rem;
 
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.footer-container h5    {
-    font-size: 15px;
-    font-family: 'Markazi Text', serif;
-    margin-bottom: 7px;
+.footer-container h5 {
+  font-size: 15px;
+  font-family: "Markazi Text", serif;
+  margin-bottom: 7px;
 }
 
-.section-1  {
-    width: 250px;
+.section-1 {
+  width: 250px;
 }
 
-.section-1 img  {
-    width: 135px;
+.section-1 img {
+  width: 135px;
 }
 
-.section-1 p    {
-    margin-top: 10px;
-    font-family: 'Karla', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.4;
+.section-1 p {
+  margin-top: 10px;
+  font-family: "Karla", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 .section-2 {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
-.section-2 nav li   {
-    font-family: 'Karla', sans-serif;
-    font-weight: 300;
+.section-2 nav li {
+  font-family: "Karla", sans-serif;
+  font-weight: 300;
 }
 
-.section-3 p   {
-    font-family: 'Karla', sans-serif;
-    font-size: 12px;
-    margin-bottom: 10px;
-    width: 120px;
+.section-3 p {
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  margin-bottom: 10px;
+  width: 120px;
 }
 
 .section-4 a {
-    font-family: 'Karla', sans-serif;
-    text-decoration: none;
-    margin-bottom: 10px;
-    color: black;
-    font-size: 13px;
-    display: flex;
-    cursor: pointer;
+  font-family: "Karla", sans-serif;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 13px;
+  display: flex;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
-    .footer-container {
-        padding: 1rem 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .footer-container p,
-    .footer-container li,
-    .footer-container a {
-        font-size: 10px;
-    }
-
-    .section-2 nav  {
-        display: flex;
-        flex-direction: column;
-
-    }
-
+  .footer-container {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
-  
-  @media only screen and (min-width: 601px) and (max-width: 1200px) {
-    .footer-container {
-        padding: 1rem 3rem;
-    }
+
+  .footer-container p,
+  .footer-container li,
+  .footer-container a {
+    font-size: 10px;
   }
+
+  .section-2 nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
+  .footer-container {
+    padding: 1rem 3rem;
+  }
+}

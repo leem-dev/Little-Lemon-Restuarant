@@ -1,134 +1,128 @@
-.heroSection    {
-    margin-top: 10px;
-    padding: 0rem 12rem;
-    height: 29vh;
-    background: #495e57;
+.heroSection {
+  margin-top: 10px;
+  padding: 0rem 12rem;
+  height: 29vh;
+  background: #495e57;
 
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
-.left-section    {
-    margin-right: auto;
-    max-width: 400px;
+.left-section {
+  margin-right: auto;
+  max-width: 400px;
 }
 
-.headerText    {
-    margin-top: 9px;
-    color: #f4ce14;
-    font-family: 'Markazi Text', serif;
-    font-size: 40px;
-    letter-spacing: 1px;
-    font-weight: 500;
+.headerText {
+  margin-top: 9px;
+  color: #f4ce14;
+  font-family: "Markazi Text", serif;
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 
-.chiText    {
-    margin-top: -12px;
-    color: white;
-    font-weight: 400;
-    letter-spacing: 1px;
-    font-size: 30px;
-    font-family: 'Markazi Text', serif;
+.chiText {
+  margin-top: -12px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-family: "Markazi Text", serif;
 }
 
-.briefText  {
-    margin: 10px 0px;
-    color: white;
-    font-size: 15px;
-    font-family: 'Karla', sans-serif;
-    min-width: 240px;
-    max-width: 300px;
+.briefText {
+  margin: 10px 0px;
+  color: white;
+  font-size: 15px;
+  font-family: "Karla", sans-serif;
+  min-width: 240px;
+  max-width: 300px;
 }
 
-.reserve-btn  {
-    margin: 10px 0px;
-    padding: 10px 25px;
+.reserve-btn {
+  margin: 10px 0px;
+  padding: 10px 25px;
 }
 
-.right-hero-section   {
-    
-    position: absolute;
-    right: 230px;
-    bottom: -30px;
+.right-hero-section {
+  position: absolute;
+  right: 230px;
+  bottom: -30px;
 }
 
 .hero-image {
-    width: 230px;
-    height: 220px;
-    border-radius: 10px;
+  width: 230px;
+  height: 220px;
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 500px) {
-    .heroSection {
-        padding: 0rem 3rem;
-        height: 60vh;
+  .heroSection {
+    padding: 0rem 3rem;
+    height: 60vh;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-
-    .left-section    {
-        margin-right: none;
-        width: 100%;
-    }
-
-    .right-hero-section   {
-        width: "210px";
-        height: "180px";
-        position: absolute;
-        left: 50px;
-        bottom: -70px;
-    }
-
-    .hero-image {
-        margin-top: 0px;
-        width: "200px";
-        height: "200px";
-
-    }
-  }
-  
-  @media only screen and (min-width: 501px) and (max-width: 800px) {
-    .heroSection {
-        padding: 0rem 3rem;
-        height: 60vh;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-
-    .hero-image {
-        margin-top: 0px;
-
-    }
-
-    .right-hero-section   {
-        position: absolute;
-        right: 40px;
-        bottom: -70px;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  @media only screen and (min-width: 801px) and (max-width: 1200px) {
-    .heroSection {
-        padding: 0rem 3rem;
-        height: 30vh;
-    }
-
-    .hero-image {
-        margin-top: 0px;
-        
-    }
-
-    .right-hero-section   {
-        width: "300px";
-        height: "270px";
-        position: absolute;
-        right: 130px;
-        bottom: -50px;
-    }
+  .left-section {
+    margin-right: none;
+    width: 100%;
   }
+
+  .right-hero-section {
+    width: "210px";
+    height: "180px";
+    position: absolute;
+    left: 50px;
+    bottom: -70px;
+  }
+
+  .hero-image {
+    margin-top: 0px;
+    width: "200px";
+    height: "200px";
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 800px) {
+  .heroSection {
+    padding: 0rem 3rem;
+    height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-image {
+    margin-top: 0px;
+  }
+
+  .right-hero-section {
+    position: absolute;
+    right: 40px;
+    bottom: -70px;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1200px) {
+  .heroSection {
+    padding: 0rem 3rem;
+    height: 30vh;
+  }
+
+  .hero-image {
+    margin-top: 0px;
+  }
+
+  .right-hero-section {
+    width: "300px";
+    height: "270px";
+    position: absolute;
+    right: 130px;
+    bottom: -50px;
+  }
+}
