@@ -1,37 +1,52 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import BookingForm from "./BookingForm";
+import BookingForm from "../booking-element/booking-form-element"; // Adjust the import path based on your project structure
 
-test("renders BookingForm component", () => {
-  const mockSubmitForm = jest.fn();
-  const mockDispatch = jest.fn();
+// Mock the functions passed as props
+const mockSubmitForm = jest.fn();
+const mockDispatch = jest.fn();
 
-  const { getByText, getByLabelText } = render(
-    <BookingForm
-      submitForm={mockSubmitForm}
-      dispatch={mockDispatch}
-      availableTimes={{ availableTimes: ["10:00 AM", "11:00 AM"] }}
-    />
-  );
+const mockProps = {
+  submitForm: mockSubmitForm,
+  dispatch: mockDispatch,
+  availableTimes: {
+    availableTimes: ["10:00", "12:30", "15:00"], // Mock availableTimes prop
+  },
+};
 
-  const headerElement = getByText(/Table Booking/i);
-  const dateInput = getByLabelText(/Choose Date/i);
-  const timeSelect = getByLabelText(/Choose Time/i);
-  const guestInput = getByLabelText(/Number of Guests/i);
-  const occasionSelect = getByLabelText(/Occasion/i);
-  const submitButton = getByText(/Make Your Reservation/i);
+describe("BookingForm", () => {
+  it("renders the form with the correct elements", () => {
+    const { getByLabelText, getByText } = render(<BookingForm {...mockProps} />);
 
-  expect(headerElement).toBeInTheDocument();
+    // Assert the existence of form elements
+    expect(getByLabelText("Choose Date:")).toBeInTheDocument();
+    expect(getByLabelText("Choose Time:")).toBeInTheDocument();
+    expect(getByLabelText("Number of Guests:")).toBeInTheDocument();
+    expect(getByLabelText("Occasion:")).toBeInTheDocument();
+    expect(getByText("Make Your Reservation")).toBeInTheDocument();
+  });
 
-  // Test form interaction (you can customize these based on your form)
-  fireEvent.change(dateInput, { target: { value: "2022-02-22" } });
-  fireEvent.change(timeSelect, { target: { value: "10:00 AM" } });
-  fireEvent.change(guestInput, { target: { value: "5" } });
-  fireEvent.change(occasionSelect, { target: { value: "Birthday" } });
+  it("calls dispatch on date change", () => {
+    const { getByLabelText } = render(<BookingForm {...mockProps} />);
 
-  fireEvent.click(submitButton);
+    // Simulate a date change
+    fireEvent.change(getByLabelText("Choose Date:"), { target: { value: "2022-12-01" } });
 
-  // Assertions based on your application logic
-  expect(mockSubmitForm).toHaveBeenCalledWith(/* expected form data */);
-  expect(mockDispatch).toHaveBeenCalledWith(/* expected dispatch data */);
+    // Assert that dispatch is called with the correct arguments
+    expect(mockDispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({ value: "2022-12-01" }),
+      })
+    );
+  });
+
+  it("calls submitForm on form submission", () => {
+    const { getByLabelText, getByText } = render(<BookingForm {...mockProps} />);
+
+    // Simulate a form submission
+    fireEvent.submit(getByText("Make Your Reservation"));
+
+    // Assert that submitForm is called
+    expect(mockSubmitForm).toHaveBeenCalled();
+  });
 });

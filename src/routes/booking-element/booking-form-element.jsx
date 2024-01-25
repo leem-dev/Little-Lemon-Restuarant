@@ -29,12 +29,19 @@ const BookingForm = props => {
           <fieldset className='form-field'>
             <div>
               <label htmlFor='book-date'>Choose Date:</label>
-              <input type='date' value={newDate} onChange={e => handleDateChange(e)} required />
+              <input
+                id='book-date'
+                type='date'
+                value={newDate}
+                onChange={e => handleDateChange(e)}
+                required
+              />
             </div>
 
             <div>
               <label htmlFor='book-time'>Choose Time:</label>
               <select
+                id='book-time'
                 className='book-time'
                 value={newTimes}
                 onChange={e => setNewTimes(e.target.value)}
@@ -50,6 +57,7 @@ const BookingForm = props => {
             <div>
               <label htmlFor='book-guest'>Number of Guests:</label>
               <input
+                id='book-guest'
                 type='number'
                 value={newGuest}
                 placeholder='1'
@@ -63,6 +71,7 @@ const BookingForm = props => {
             <div>
               <label htmlFor='book-occasion'>Occasion:</label>
               <select
+                id='book-occasion'
                 key={newOccasion}
                 value={newOccasion}
                 onChange={e => setNewOccasion(e.target.value)}

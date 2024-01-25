@@ -43,7 +43,7 @@ const Main = () => {
   };
 
   return (
-    <div>
+    <div data-testid='main-component'>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route

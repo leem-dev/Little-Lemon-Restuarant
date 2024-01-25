@@ -23,7 +23,7 @@ const Footer = () => {
   };
 
   return (
-    <div className='footer-container'>
+    <div data-testid='footer-component' className='footer-container'>
       <section className='section-1'>
         <img src={FooterLogo} alt='logo' />
         <p>

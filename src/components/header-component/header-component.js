@@ -24,7 +24,7 @@ const Header = () => {
     textDecoration: "none",
   };
   return (
-    <>
+    <header data-testid='header-component'>
       <div className='header-section'>
         <img src={Logo} alt='Logo' className='logo' />
         <nav className='nav-body-list'>
@@ -63,7 +63,7 @@ const Header = () => {
         </nav>
         <Navigation />
       </div>
-    </>
+    </header>
   );
 };
 
