@@ -32,8 +32,8 @@ const Main = () => {
     return { availableTimes: fetchAPI(new Date()) };
   };
 
-  const initialState = { availableTimes: fetchAPI(new Date()) };
-  const [state, dispatch] = useReducer(updateTimes, initialState);
+  const initializeTimes = { availableTimes: fetchAPI(new Date()) };
+  const [state, dispatch] = useReducer(updateTimes, initializeTimes);
 
   const navigate = useNavigate();
   const submitForm = formData => {
