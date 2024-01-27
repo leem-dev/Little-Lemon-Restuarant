@@ -1,6 +1,6 @@
 import React from "react";
 import { useReducer } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "../../routes/booking-element/booking-element";
 import ConfirmBooking from "../../routes/booking-element/confirm-booking-element";
 import HomePage from "../../routes/homepage-element/homepage-element";
