@@ -11,7 +11,7 @@ describe("Main Component", () => {
     render(<Main />);
 
     expect(screen.getByTestId("main-component")).toBeInTheDocument();
-    expect(screen.getByTestId("available-times")).toBeInTheDocument(); // Adjust based on your actual component structure
+    expect(screen.getByTestId("available-times")).toBeInTheDocument();
   });
 
   it("returns the correct expected value", () => {
