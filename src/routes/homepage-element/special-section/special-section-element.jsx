@@ -1,5 +1,5 @@
 import Greek from "../../../assets/greek salad.jpg";
-import Bruch from "../../../assets/bruchetta.svg";
+import Bruch from "../../../assets/bruchetta.jpg";
 import Dessert from "../../../assets/lemon dessert.jpg";
 import Delivery from "../../../assets/delivery.svg";
 
