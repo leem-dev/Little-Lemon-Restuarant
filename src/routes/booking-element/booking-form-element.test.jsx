@@ -10,7 +10,7 @@ const mockProps = {
   submitForm: mockSubmitForm,
   dispatch: mockDispatch,
   availableTimes: {
-    availableTimes: ["10:00", "12:30", "15:00"], // Mock availableTimes prop
+    availableTimes: ["10:00", "12:30", "15:00"],
   },
 };
 

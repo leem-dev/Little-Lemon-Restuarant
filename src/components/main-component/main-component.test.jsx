@@ -1,32 +1,29 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import Main from "../main-component/main-component";
-
-// Mock the react-router-dom useNavigate hook
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: jest.fn(),
-}));
+import { render, screen } from "@testing-library/react";
+import { initializeTimes } from "../main-component/main-component";
+import fetchAPI from "../main-component/main-component";
+import { updateTimes } from "../main-component/main-component";
+import Main from "../../components/main-component/main-component";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("Main Component", () => {
-  test("initializeTimes function returns expected value", () => {
-    const { result } = render(<Main />);
+  it("initializes available times correctly", () => {
+    render(<Main />);
 
-    // Access the state after rendering
-    const { availableTimes } = result.current.state;
-
-    // Adjust this assertion based on the actual expected value from fetchAPI
-    expect(availableTimes).toEqual(["17:00", "17:30" /* ... other expected values ... */]);
+    expect(screen.getByTestId("main-component")).toBeInTheDocument();
+    expect(screen.getByTestId("available-times")).toBeInTheDocument(); // Adjust based on your actual component structure
   });
 
-  test("updateTimes function returns the same value as provided in the state", () => {
-    const { result } = render(<Main />);
-    const { state, dispatch } = result.current;
+  it("returns the correct expected value", () => {
+    const currentDate = new Date();
+    const expectedValue = { availableTimes: fetchAPI(currentDate) };
+    expect(initializeTimes).toEqual(expectedValue);
+  });
 
-    // Call updateTimes with the current state
-    const updatedState = state.reducer(state, dispatch, state);
-
-    // Assert that the availableTimes property remains the same
-    expect(updatedState.availableTimes).toEqual(state.availableTimes);
+  it("returns the same value provided in the state", () => {
+    const currentDate = new Date();
+    const currentState = { availableTimes: fetchAPI(currentDate) };
+    const expectedValue = { availableTimes: fetchAPI(currentDate) };
+    expect(updateTimes(currentState, currentDate)).toEqual(expectedValue);
   });
 });
