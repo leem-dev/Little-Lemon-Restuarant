@@ -1,9 +1,10 @@
 import React from "react";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "../../routes/booking-element/booking-element";
 import ConfirmBooking from "../../routes/booking-element/confirm-booking-element";
 import HomePage from "../../routes/homepage-element/homepage-element";
+// import fetchData from "../../path/to/api";
 
 const Main = () => {
   const seedRandom = function (seed) {
@@ -15,24 +16,33 @@ const Main = () => {
     };
   };
 
-  const fetchAPI = function (date) {
-    let result = [];
-    let randomDate = seedRandom(date.getDate());
-    for (let i = 17; i <= 23; i++) {
-      randomDate() < 0.5 ? result.push(i + ":00") : result.push(i + ":30");
-    }
-    return result;
+  const fetchAPI = async function (date) {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/Meta-Front-End-Developer-PC/capstone/master/api.js"
+    );
+    const data = await response.json();
+    return data;
   };
 
   const submitAPI = function (formData) {
     return true;
   };
 
-  const updateTimes = (state, date) => {
-    return { availableTimes: fetchAPI(new Date()) };
+  const updateTimes = async (state, date) => {
+    const newAvailableTimes = await fetchAPI(date);
+    return { availableTimes: newAvailableTimes };
   };
 
-  const initializeTimes = { availableTimes: fetchAPI(new Date()) };
+  // const initializeTimes = { availableTimes: fetchAPI(new Date()) };
+  const initializeTimes = async () => {
+    try {
+      const initialState = await fetchAPI(new Date());
+      dispatch({ type: "UPDATE_TIMES", availableTimes: initialState.availableTimes });
+    } catch (error) {
+      console.error("Error initializing times:", error);
+    }
+  };
+
   const [state, dispatch] = useReducer(updateTimes, initializeTimes);
 
   const navigate = useNavigate();
@@ -41,6 +51,10 @@ const Main = () => {
       navigate("/confirmed");
     }
   };
+
+  useEffect(() => {
+    initializeTimes();
+  }, []);
 
   return (
     <div data-testid='main-component'>

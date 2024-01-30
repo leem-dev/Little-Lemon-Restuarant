@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./booking-element-styles.css";
 
 const BookingForm = props => {
@@ -16,6 +16,19 @@ const BookingForm = props => {
     setNewDate(e.target.value);
     props.dispatch(e);
   };
+
+  const availableTimes = props.availableTimes ? props.availableTimes.availableTimes : [];
+
+  useEffect(() => {
+    const fetchAvailableTimes = async () => {
+      const times = await props.availableTimes?.availableTimes;
+      if (Array.isArray(times)) {
+        setNewTimes(times[0]);
+      }
+    };
+
+    fetchAvailableTimes();
+  }, [props.availableTimes]);
 
   const formStyle = {
     display: "grid",
@@ -38,21 +51,23 @@ const BookingForm = props => {
               />
             </div>
 
-            <div>
-              <label htmlFor='book-time'>Choose Time:</label>
-              <select
-                id='book-time'
-                className='book-time'
-                value={newTimes}
-                onChange={e => setNewTimes(e.target.value)}
-                required
-              >
-                <option>Select a Time</option>
-                {props.availableTimes.availableTimes.map(newTime => {
-                  return <option key={newTime}>{newTime}</option>;
-                })}
-              </select>
-            </div>
+            {availableTimes && (
+              <div>
+                <label htmlFor='book-time'>Choose Time:</label>
+                <select
+                  id='book-time'
+                  className='book-time'
+                  value={newTimes}
+                  onChange={e => setNewTimes(e.target.value)}
+                  required
+                >
+                  <option>Select a Time</option>
+                  {availableTimes.map(newTime => (
+                    <option key={newTime}>{newTime}</option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             <div>
               <label htmlFor='book-guest'>Number of Guests:</label>
