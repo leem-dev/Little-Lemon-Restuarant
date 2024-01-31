@@ -34,6 +34,13 @@
   margin-right: 10px;
 }
 
+.form-field .input {
+  background-color: #b6b5b59a;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 3px;
+}
+
 @media only screen and (max-width: 500px) {
   .form-box {
     padding: 1rem 2rem;

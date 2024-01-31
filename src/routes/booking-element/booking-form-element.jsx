@@ -17,18 +17,23 @@ const BookingForm = props => {
     props.dispatch(e);
   };
 
-  const availableTimes = props.availableTimes ? props.availableTimes.availableTimes : [];
-
   useEffect(() => {
     const fetchAvailableTimes = async () => {
-      const times = await props.availableTimes?.availableTimes;
-      if (Array.isArray(times)) {
-        setNewTimes(times[0]);
+      if (newDate) {
+        try {
+          const response = await fetch(
+            `https://drive.google.com/file/d/1PMLIeT_CGv6oGL7WoXa-ubgcSspRfyBL/view?usp=sharing`
+          );
+          const data = await response.json();
+          setNewTimes(data.availableTimes[0]);
+        } catch (error) {
+          console.error("Error fetching available times:", error);
+        }
       }
     };
 
     fetchAvailableTimes();
-  }, [props.availableTimes]);
+  }, [newDate]);
 
   const formStyle = {
     display: "grid",
@@ -45,29 +50,30 @@ const BookingForm = props => {
               <input
                 id='book-date'
                 type='date'
+                className='input'
                 value={newDate}
                 onChange={e => handleDateChange(e)}
                 required
               />
             </div>
 
-            {availableTimes && (
-              <div>
-                <label htmlFor='book-time'>Choose Time:</label>
-                <select
-                  id='book-time'
-                  className='book-time'
-                  value={newTimes}
-                  onChange={e => setNewTimes(e.target.value)}
-                  required
-                >
-                  <option>Select a Time</option>
-                  {availableTimes.map(newTime => (
-                    <option key={newTime}>{newTime}</option>
-                  ))}
-                </select>
-              </div>
-            )}
+            {/* {availableTimes && ( */}
+            <div>
+              <label htmlFor='book-time'>Choose Time:</label>
+              <select
+                id='book-time'
+                className='book-time input'
+                value={newTimes}
+                onChange={e => setNewTimes(e.target.value)}
+                required
+              >
+                <option>Select a Time</option>
+                {props.availableTimes?.availableTimes?.map(newTime => (
+                  <option key={newTime}>{newTime}</option>
+                ))}
+              </select>
+            </div>
+            {/* )} */}
 
             <div>
               <label htmlFor='book-guest'>Number of Guests:</label>
@@ -79,7 +85,7 @@ const BookingForm = props => {
                 min='1'
                 max='10'
                 onChange={e => setNewGuest(e.target.value)}
-                className='book-guest'
+                className='book-guest input'
               />
             </div>
 
@@ -87,6 +93,7 @@ const BookingForm = props => {
               <label htmlFor='book-occasion'>Occasion:</label>
               <select
                 id='book-occasion'
+                className='input'
                 key={newOccasion}
                 value={newOccasion}
                 onChange={e => setNewOccasion(e.target.value)}

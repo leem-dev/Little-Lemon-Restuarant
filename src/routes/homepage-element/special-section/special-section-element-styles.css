@@ -12,9 +12,9 @@
 
 .specials-top h2 {
   margin-right: auto;
-  /* color: #f4ce14; */
+  color: #495e57;
   font-family: "Markazi Text", serif;
-  font-size: 50px;
+  font-size: 60px;
   letter-spacing: 1px;
   font-weight: 500;
 }
@@ -122,7 +122,7 @@
   }
 
   .specials-top h2 {
-    font-size: 30px;
+    font-size: 40px;
     white-space: nowrap;
   }
 
@@ -153,7 +153,7 @@
   }
 
   .specials-top h2 {
-    font-size: 40px;
+    font-size: 50px;
     white-space: nowrap;
   }
 
