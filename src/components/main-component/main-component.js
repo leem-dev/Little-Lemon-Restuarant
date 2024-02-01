@@ -4,14 +4,11 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "../../routes/booking-element/booking-element";
 import ConfirmBooking from "../../routes/booking-element/confirm-booking-element";
 import HomePage from "../../routes/homepage-element/homepage-element";
+import fakeAPI from "../../path/to/api";
 
 const fetchAPI = async date => {
   try {
-    const response = await fetch(
-      "https://drive.google.com/file/d/1PMLIeT_CGv6oGL7WoXa-ubgcSspRfyBL/view?usp=sharing"
-    );
-    const data = await response.json();
-    return data;
+    return fakeAPI.fetchAPI(new Date(date));
   } catch (error) {
     console.error("Error fetching API:", error);
     throw error;
@@ -30,13 +27,13 @@ const updateTimes = async (state, date) => {
 
 const Main = () => {
   const submitAPI = function (formData) {
-    return true;
+    return fakeAPI.submitAPI(formData);
   };
 
-  const initializeTimes = async () => {
+  const initializeTimes = async dispatch => {
     try {
-      const initialState = await fetchAPI(new Date().toISOString().split("T")[0]);
-      dispatch({ type: "UPDATE_TIMES", availableTimes: initialState.availableTimes });
+      const initialState = await fetchAPI(new Date());
+      dispatch({ type: "UPDATE_TIMES", availableTimes: initialState });
     } catch (error) {
       console.error("Error initializing times:", error);
     }
@@ -53,7 +50,7 @@ const Main = () => {
   };
 
   useEffect(() => {
-    initializeTimes();
+    initializeTimes(dispatch);
   }, []);
 
   return (

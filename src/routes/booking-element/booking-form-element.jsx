@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import "./booking-element-styles.css";
+import fakeAPI from "../../path/to/api";
 
 const BookingForm = props => {
   const [newDate, setNewDate] = useState("");
   const [newTimes, setNewTimes] = useState("");
   const [newGuest, setNewGuest] = useState("");
   const [newOccasion, setNewOccasion] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleFormSubmission = e => {
     e.preventDefault();
@@ -21,11 +23,26 @@ const BookingForm = props => {
     const fetchAvailableTimes = async () => {
       if (newDate) {
         try {
-          const response = await fetch(
-            `https://drive.google.com/file/d/1PMLIeT_CGv6oGL7WoXa-ubgcSspRfyBL/view?usp=sharing`
-          );
-          const data = await response.json();
-          setNewTimes(data.availableTimes[0]);
+          const response = await fetch(fakeAPI);
+          const contentType = response.headers.get("content-type");
+
+          if (contentType && contentType.includes("application/json")) {
+            // If the response is JSON, parse it
+            const data = await response.json();
+
+            // Check if the response has a property named 'availableTimes'
+            if (data && data.availableTimes && Array.isArray(data.availableTimes)) {
+              // Assuming 'availableTimes' is an array of strings
+              setNewTimes(data.availableTimes.length > 0 ? data.availableTimes[0] : "");
+            } else {
+              console.warn(
+                "Response does not have 'availableTimes' property or it's not an array:",
+                data
+              );
+            }
+          } else {
+            console.warn("Response is not JSON:", response);
+          }
         } catch (error) {
           console.error("Error fetching available times:", error);
         }
@@ -34,6 +51,22 @@ const BookingForm = props => {
 
     fetchAvailableTimes();
   }, [newDate]);
+
+  // useEffect(() => {
+  //   const fetchAvailableTimes = async () => {
+  //     if (newDate) {
+  //       try {
+  //         const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  //         const data = await response.json();
+  //         setNewTimes(data.availableTimes[0]);
+  //       } catch (error) {
+  //         console.error("Error fetching available times:", error);
+  //       }
+  //     }
+  //   };
+
+  //   fetchAvailableTimes();
+  // }, [newDate]);
 
   const formStyle = {
     display: "grid",
@@ -104,12 +137,16 @@ const BookingForm = props => {
             </div>
 
             <div className='submit-btn'>
-              <input
-                aria-label='On Click'
-                type='submit'
-                value={"Make Your Reservation"}
-                className='btn'
-              />
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <input
+                  aria-label='On Click'
+                  type='submit'
+                  value={"Make Your Reservation"}
+                  className='btn'
+                />
+              )}
             </div>
           </fieldset>
         </form>
