@@ -1,19 +1,27 @@
 import React from "react";
-import { useReducer, useEffect } from "react";
+import { useState, useReducer, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "../../routes/booking-element/booking-element";
 import ConfirmBooking from "../../routes/booking-element/confirm-booking-element";
 import HomePage from "../../routes/homepage-element/homepage-element";
-import fakeAPI from "../../path/to/api";
+import { fetchAPI, submitAPI } from "../../path/to/api";
 
-const fetchAPI = async date => {
-  try {
-    return fakeAPI.fetchAPI(new Date(date));
-  } catch (error) {
-    console.error("Error fetching API:", error);
-    throw error;
-  }
-};
+// const fetchAPI = async date => {
+//   console.log("Type of date:", typeof date);
+//   try {
+//     const response = await fetch(fakeAPI.fetchAPI(new Date(date)));
+//     const data = await response.json();
+
+//     console.log("Response", response);
+
+//     console.log("Data", data);
+
+//     return data.availableTimes;
+//   } catch (error) {
+//     console.error("Error fetching API:", error);
+//     throw error;
+//   }
+// };
 
 const updateTimes = async (state, date) => {
   try {
@@ -26,26 +34,33 @@ const updateTimes = async (state, date) => {
 };
 
 const Main = () => {
-  const submitAPI = function (formData) {
-    return fakeAPI.submitAPI(formData);
-  };
+  const [loading, setLoading] = useState(false);
+  const [state, dispatch] = useReducer(updateTimes, { availableTimes: [] });
+  const navigate = useNavigate();
+
+  // const submitAPI = function (formData) {
+  //   return true;
+  // };
 
   const initializeTimes = async dispatch => {
     try {
-      const initialState = await fetchAPI(new Date());
+      const initialState = await fetchAPI(new Date().toISOString().split("T")[0]);
       dispatch({ type: "UPDATE_TIMES", availableTimes: initialState });
     } catch (error) {
       console.error("Error initializing times:", error);
     }
   };
 
-  const [state, dispatch] = useReducer(updateTimes, { availableTimes: [] });
-
-  const navigate = useNavigate();
-
-  const submitForm = formData => {
-    if (submitAPI(formData)) {
-      navigate("/confirmed");
+  const submitForm = async formData => {
+    setLoading(true);
+    try {
+      if (await submitAPI(formData)) {
+        navigate("/confirmed");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,7 +75,13 @@ const Main = () => {
         <Route
           path='/booking'
           element={
-            <BookingPage availableTimes={state} dispatch={dispatch} submitForm={submitForm} />
+            <BookingPage
+              availableTimes={state}
+              dispatch={dispatch}
+              submitForm={submitForm}
+              loading={loading}
+              fetchAPI={fetchAPI}
+            />
           }
         />
         <Route path='/confirmed' element={<ConfirmBooking />} />
