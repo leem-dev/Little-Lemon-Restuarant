@@ -36,7 +36,12 @@ const BookingForm = props => {
 
   const handleFormSubmission = e => {
     e.preventDefault();
-    props.submitForm(e);
+    props.submitForm({
+      date: newDate,
+      time: newTimes,
+      guest: newGuest,
+      occasion: newOccasion,
+    });
   };
 
   const handleDateChange = (e, date) => {
@@ -52,16 +57,15 @@ const BookingForm = props => {
   useEffect(() => {
     const fetchAvailableTimes = async () => {
       try {
-        const currentDate = new Date();
-        const availableTimes = await props.fetchAPI(currentDate);
+        const availableTimes = await props.fetchAPI(newDate);
         setNewTimes(availableTimes.length > 0 ? availableTimes[0] : "");
       } catch (error) {
         console.error("Error fetching available times:", error);
       }
     };
 
-    fetchAvailableTimes();
-  }, [props.fetchAPI]);
+    if (newDate) fetchAvailableTimes();
+  }, [newDate]);
 
   const formStyle = {
     display: "grid",
