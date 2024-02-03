@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "../../routes/booking-element/booking-element";
 import ConfirmBooking from "../../routes/booking-element/confirm-booking-element";
 import HomePage from "../../routes/homepage-element/homepage-element";
-import { fetchAPI, submitAPI } from "../../path/to/api";
+import { myFetchAPI, mySubmitAPI } from "../../path/to/api";
 
 // const fetchAPI = async date => {
 //   console.log("Type of date:", typeof date);
@@ -25,7 +25,7 @@ import { fetchAPI, submitAPI } from "../../path/to/api";
 
 const updateTimes = async (state, date) => {
   try {
-    const newAvailableTimes = await fetchAPI(date);
+    const newAvailableTimes = await myFetchAPI(date);
     return { availableTimes: newAvailableTimes };
   } catch (error) {
     console.error("Error updating times:", error);
@@ -34,7 +34,7 @@ const updateTimes = async (state, date) => {
 };
 
 const Main = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(updateTimes, { availableTimes: [] });
   const navigate = useNavigate();
 
@@ -44,7 +44,8 @@ const Main = () => {
 
   const initializeTimes = async dispatch => {
     try {
-      const initialState = await fetchAPI(new Date().toISOString().split("T")[0]);
+      const currentDate = new Date();
+      const initialState = await myFetchAPI(currentDate);
       dispatch({ type: "UPDATE_TIMES", availableTimes: initialState });
     } catch (error) {
       console.error("Error initializing times:", error);
@@ -52,16 +53,17 @@ const Main = () => {
   };
 
   const submitForm = async formData => {
-    setLoading(true);
-    try {
-      if (await submitAPI(formData)) {
-        navigate("/confirmed");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
-      setLoading(false);
-    }
+    navigate("/confirmed");
+    // setLoading(true);
+    // try {
+    //   if (await mySubmitAPI(formData)) {
+    //     navigate("/confirmed");
+    //   }
+    // } catch (error) {
+    //   console.error("Error submitting form:", error);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   useEffect(() => {
@@ -79,8 +81,8 @@ const Main = () => {
               availableTimes={state}
               dispatch={dispatch}
               submitForm={submitForm}
-              loading={loading}
-              fetchAPI={fetchAPI}
+              // loading={loading}
+              fetchAPI={myFetchAPI}
             />
           }
         />

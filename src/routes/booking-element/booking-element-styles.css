@@ -41,6 +41,25 @@
   border-radius: 3px;
 }
 
+.confirmed--booking {
+  padding: 1rem 12rem;
+  background: #495e57;
+  color: white;
+  height: 20vh;
+  font-family: "Markazi Text", serif;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  font-size: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmed--booking span {
+  color: #f4ce14;
+  text-transform: uppercase;
+}
+
 @media only screen and (max-width: 500px) {
   .form-box {
     padding: 1rem 2rem;
@@ -53,16 +72,28 @@
   .form h2 {
     font-size: 30px;
   }
+
+  .confirmed--booking {
+    padding: 1rem 3rem;
+    font-size: 18px;
+  }
 }
 
 @media only screen and (min-width: 501px) and (max-width: 800px) {
   .form-box {
     padding: 1rem 2rem;
   }
-}
 
-@media only screen and (min-width: 801px) and (max-width: 1200px) {
-  .form-box {
-    padding: 1rem 2rem;
+  .confirmed--booking {
+    padding: 1rem 5rem;
+    font-size: 23px;
   }
 }
+
+/* @media only screen and (min-width: 801px) and (max-width: 1200px) {
+  .form-box {
+    padding: 1rem 3rem;
+  }
+
+  
+} */

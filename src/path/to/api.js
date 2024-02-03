@@ -22,19 +22,20 @@ const availableTimesByDate = {
   "2024-02-22": ["14:00", "15:00", "16:00"],
 };
 
-const fetchAPI = dateString => {
+const myFetchAPI = date => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const date = new Date(dateString);
-      const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
-        2,
-        "0"
-      )}-${String(date.getDate()).padStart(2, "0")}`;
+      const formattedDate =
+        date instanceof Date
+          ? `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
+              date.getDate()
+            ).padStart(2, "0")}`
+          : date;
 
       if (availableTimesByDate[formattedDate]) {
         resolve(availableTimesByDate[formattedDate]);
       } else {
-        reject(new Error("No available times for the selected date."));
+        resolve([]); // Resolve with an empty array when no times are available
       }
     }, 1000);
   });
@@ -52,7 +53,7 @@ const fetchAPI = dateString => {
 //   });
 // };
 
-const submitAPI = formData => {
+const mySubmitAPI = formData => {
   availableTimesByDate[formData.date] = availableTimesByDate[formData.date].filter(
     time => time !== formData.time
   );
@@ -68,4 +69,4 @@ const submitAPI = formData => {
   });
 };
 
-export { fetchAPI, submitAPI };
+export { myFetchAPI, mySubmitAPI };

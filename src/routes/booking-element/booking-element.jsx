@@ -6,6 +6,8 @@ const BookingPage = props => {
       availableTimes={props.availableTimes}
       dispatch={props.dispatch}
       submitForm={props.submitForm}
+      loading={props.loading}
+      fetchAPI={props.fetchAPI}
     />
   );
 };

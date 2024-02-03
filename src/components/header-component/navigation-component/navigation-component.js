@@ -16,7 +16,6 @@ const Navigation = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    console.log("I am here");
   };
 
   useEffect(() => {
