@@ -1,6 +1,8 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
+// import "@testing-library/jest-dom/extend-expect";
 import BookingForm from "../booking-element/booking-form-element"; // Adjust the import path based on your project structure
+import { myFetchAPI } from "../../path/to/api";
 
 // Mock the functions passed as props
 const mockSubmitForm = jest.fn();
@@ -48,5 +50,19 @@ describe("BookingForm", () => {
 
     // Assert that submitForm is called
     expect(mockSubmitForm).toHaveBeenCalled();
+  });
+
+  it("applies HTML5 validation attributes", async () => {
+    render(<BookingForm fetch={myFetchAPI} />);
+
+    const dateInput = screen.getByLabelText("Choose Date:");
+    const timeInput = screen.getByLabelText("Choose Time:");
+    const guestInput = screen.getByLabelText("Number of Guests:");
+    const occasionInput = screen.getByLabelText("Occasion:");
+
+    expect(dateInput).toHaveAttribute("required");
+    expect(timeInput).toHaveAttribute("required");
+    expect(guestInput).toHaveAttribute("required");
+    expect(occasionInput).toHaveAttribute("required");
   });
 });

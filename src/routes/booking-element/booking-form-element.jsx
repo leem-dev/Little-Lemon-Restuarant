@@ -33,9 +33,15 @@ const BookingForm = props => {
   const [newOccasion, setNewOccasion] = useState("");
   const [selectTime, setSelectedTime] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [formValid, setFormValid] = useState(false);
+
+  const handleGuestLength = e => {
+    setNewGuest(e.target.value);
+  };
 
   const handleFormSubmission = e => {
     e.preventDefault();
+
     props.submitForm({
       date: newDate,
       time: newTimes,
@@ -52,6 +58,13 @@ const BookingForm = props => {
     myFetchAPI(date)
       .then(response => console.log(response))
       .catch(error => console.log(error));
+
+    validateBookingForm();
+  };
+
+  const validateBookingForm = () => {
+    const isFormValid = newDate !== "" && newTimes !== "" && newGuest !== "" && newOccasion !== "";
+    setFormValid(isFormValid);
   };
 
   useEffect(() => {
@@ -64,8 +77,10 @@ const BookingForm = props => {
       }
     };
 
+    validateBookingForm();
+
     if (newDate) fetchAvailableTimes();
-  }, [newDate]);
+  }, [newDate, newGuest, newTimes, newOccasion]);
 
   const formStyle = {
     display: "grid",
@@ -116,8 +131,9 @@ const BookingForm = props => {
                 placeholder='1'
                 min='1'
                 max='10'
-                onChange={e => setNewGuest(e.target.value)}
+                onChange={handleGuestLength}
                 className='book-guest input'
+                required
               />
             </div>
 
@@ -129,6 +145,7 @@ const BookingForm = props => {
                 key={newOccasion}
                 value={newOccasion}
                 onChange={e => setNewOccasion(e.target.value)}
+                required
               >
                 <option>Birthday</option>
                 <option>Anniversary</option>
@@ -144,6 +161,7 @@ const BookingForm = props => {
                   type='submit'
                   value={"Make Your Reservation"}
                   className='btn'
+                  disabled={!formValid}
                 />
               )}
             </div>
