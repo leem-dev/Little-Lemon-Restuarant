@@ -104,7 +104,6 @@ const BookingForm = props => {
               />
             </div>
 
-            {/* {availableTimes && ( */}
             <div>
               <label htmlFor='book-time'>Choose Time:</label>
               <select
